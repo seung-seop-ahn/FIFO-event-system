@@ -6,17 +6,20 @@
 ## Install
 
 ```sh
+$ docker build -t coupon:latest .
+$ docker run -d -p 3306:3306 --name coupon coupon:latest
 ```
 
-## Usage
+## Requirements
 
-```sh
-```
 
-## Run tests
+We plan to conduct an event offering discount coupons to the first 100 people on a first-come, first-served basis.
 
-```sh
-```
+This event must satisfy the following conditions.
+
+- It must be awarded to only the first 100 people.
+- No more than 100 coupons should be issued.
+- It must be able to withstand surges in traffic.
 
 ## Author
 
