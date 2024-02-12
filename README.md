@@ -35,6 +35,25 @@ This event must satisfy the following conditions.
   - RDB CPU usage increase.
 - S: Kafka
 
+```sh
+# create topic
+$ docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test_topic
+
+# execute produce (terminal 1)
+$ docker exec -it kafka kafka-console-producer.sh --topic test_topic --broker-list 0.0.0.0:9092
+
+# execute consumer (terminal 2)
+$ docker exec -it kafka kafka-console-consumer.sh --topic test_topic --bootstrap-server localhost:9092
+```
+
+```sh
+# coupon topic
+$ docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --create --topic
+
+# coupon consumer 
+$ docker exec -it kafka kafka-console-consumer.sh --topic coupon_create --bootstrap-server localhost:9092 --key-deserializer "org.apache.kafka.common.serialization.StringDeserializer" --value-deserializer "org.apache.kafka.common.serialization.LongDeserializer"
+```
+
 ## Author
 
 👤 **Kevin Ahn**
