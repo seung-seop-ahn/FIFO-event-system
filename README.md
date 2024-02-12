@@ -6,8 +6,7 @@
 ## Install
 
 ```sh
-$ docker build -t coupon:latest .
-$ docker run -d -p 3306:3306 --name coupon coupon:latest
+$ docker-compose up -d
 ```
 
 ## Requirements
@@ -21,13 +20,10 @@ This event must satisfy the following conditions.
 - No more than 100 coupons should be issued.
 - It must be able to withstand surges in traffic.
 
-## Issue
+## Problem & Solution
 
-- Race condition
-
-## Solve
-
-- Redis
+- P: Race condition
+- S: Redis
 
 ## Author
 
