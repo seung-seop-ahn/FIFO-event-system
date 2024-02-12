@@ -52,6 +52,10 @@ class ApplyServiceTest {
 
 		latch.await();
 
+		// Failed because the number of coupons is retrieved based on the time data "transmission" is completed.
+		// So make thread sleep to pass the test.
+		Thread.sleep(10000);
+
 		long count = couponRepository.count();
 		assertThat(count).isEqualTo(100);
 	}
