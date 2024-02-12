@@ -54,6 +54,11 @@ $ docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --crea
 $ docker exec -it kafka kafka-console-consumer.sh --topic coupon_create --bootstrap-server localhost:9092 --key-deserializer "org.apache.kafka.common.serialization.StringDeserializer" --value-deserializer "org.apache.kafka.common.serialization.LongDeserializer"
 ```
 
+## Problem & Solution 3
+
+- Limit 1 coupon per person (additional requirement)
+  - Use Set data structure (Redis)
+
 ## Author
 
 👤 **Kevin Ahn**

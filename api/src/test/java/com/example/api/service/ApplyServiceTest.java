@@ -60,5 +60,35 @@ class ApplyServiceTest {
 		assertThat(count).isEqualTo(100);
 	}
 
+	@Test
+	public void applyPerPerson() throws InterruptedException {
+		int threadCount = 1000;
+
+		// Multi-thread
+		ExecutorService executorService = Executors.newFixedThreadPool(32);
+
+		CountDownLatch latch = new CountDownLatch(threadCount);
+
+		for(int i = 0; i < threadCount; i++) {
+			executorService.submit(() -> {
+				try {
+					// Apply only one userId(1L)
+					this.applyService.apply(1L);
+				} finally {
+					latch.countDown();
+				}
+			});
+		}
+
+		latch.await();
+
+		// Failed because the number of coupons is retrieved based on the time data "transmission" is completed.
+		// So make thread sleep to pass the test.
+		Thread.sleep(10000);
+
+		long count = couponRepository.count();
+		assertThat(count).isEqualTo(1);
+	}
+
 }
 
