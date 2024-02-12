@@ -20,10 +20,20 @@ This event must satisfy the following conditions.
 - No more than 100 coupons should be issued.
 - It must be able to withstand surges in traffic.
 
-## Problem & Solution
+## Problem & Solution 1
 
 - P: Race condition (coupon count)
 - S: Redis (single thread, incr)
+
+## Problem & Solution 2
+
+- P: MySql is under load
+  - Assuming that it is possible to insert 100 pieces of data per minute.
+    - 10:00: coupon insert 10000 request => 100min
+    - 10:01: order request => processed after 100min (timeout)
+    - 10:02: sign-up request => processed after 100min (timeout)
+  - RDB CPU usage increase.
+- S: Kafka
 
 ## Author
 
