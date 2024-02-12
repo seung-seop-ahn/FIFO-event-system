@@ -21,6 +21,14 @@ This event must satisfy the following conditions.
 - No more than 100 coupons should be issued.
 - It must be able to withstand surges in traffic.
 
+## Issue
+
+- Race condition
+
+## Solve
+
+- Redis
+
 ## Author
 
 👤 **Kevin Ahn**
