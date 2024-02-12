@@ -22,8 +22,8 @@ This event must satisfy the following conditions.
 
 ## Problem & Solution
 
-- P: Race condition
-- S: Redis
+- P: Race condition (coupon count)
+- S: Redis (single thread, incr)
 
 ## Author
 
